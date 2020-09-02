@@ -10,7 +10,6 @@ from rest_framework.views import APIView
 
 from .models import User
 from .serializers import EmailSerializer, TokenSerializer, UserSerializer
-from .permissions import IsAuthorOrReadOnly
 from api_yamdb.permissions import has_role
 from django.core.cache import cache
 
