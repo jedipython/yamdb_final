@@ -1,10 +1,7 @@
-from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core.mail import send_mail
-from django.http import request
 
 from rest_framework import viewsets, status
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import AccessToken
@@ -14,7 +11,7 @@ from rest_framework.views import APIView
 from .models import User
 from .serializers import EmailSerializer, TokenSerializer, UserSerializer
 from .permissions import IsAuthorOrReadOnly
-from api_yamdb.permissions import IsAuthorOrReadOnly, has_role
+from api_yamdb.permissions import has_role
 from django.core.cache import cache
 
 
