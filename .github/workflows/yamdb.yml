@@ -23,4 +23,4 @@ jobs:
       run: flake8 --ignore E501 --exclude tests .
 
     - name: Test with pytest
-      run: pytest tests.py
+      run: pytest tests
