@@ -41,6 +41,7 @@ class ReviewSerializer(serializers.ModelSerializer):
             # пробуем получить объект Review для текущего автора и тайтла
             review = Review.objects.get(
                 review_object__id=title_id, author=user)
+            print(review)
         except Review.DoesNotExist:
             # Если не получилось, то все хорошо: перед нами уникальный обзор
             # здесь не может быть исключения MultipleObjectsReturned

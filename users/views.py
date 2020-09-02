@@ -18,17 +18,16 @@ from api_yamdb.permissions import IsAuthorOrReadOnly, has_role
 from django.core.cache import cache
 
 
-
-
 @api_view(["POST"])
 def send_code(request):
     serializer = EmailSerializer(data=request.data)
     if serializer.is_valid():
         email = serializer.data['email']
-        user = User(email=email) # создаем юзера без добавления в базу
+        user = User(email=email)  # создаем юзера без добавления в базу
         generator = PasswordResetTokenGenerator()
         confirmation_code = generator.make_token(user)
-        cache.set(email + confirmation_code, user, 600) # сохраняем юзера в кэше на 10 минут
+        # сохраняем юзера в кэше на 10 минут
+        cache.set(email + confirmation_code, user, 600)
         send_mail(
             'Token',
             confirmation_code,

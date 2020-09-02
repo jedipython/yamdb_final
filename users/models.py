@@ -7,6 +7,7 @@ from django.contrib.auth.validators import UnicodeUsernameValidator
 
 username_validator = UnicodeUsernameValidator()
 
+
 class User(AbstractUser):
     bio = models.TextField(max_length=500, blank=True, null=True)
     USER = 'user'
