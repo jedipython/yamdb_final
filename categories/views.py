@@ -1,12 +1,9 @@
-from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, filters, mixins
-from rest_framework.permissions import IsAuthenticated
 from .models import Category, Genre, Title
 from .serializers import TitleSerializer, CategorySerializer, GenreSerializer
 from .filters import TitlesFilter
-from api_yamdb.permissions import IsAuthorOrReadOnly, has_role
-import django_filters
+from api_yamdb.permissions import has_role
 
 
 class CategoryViewSet(mixins.CreateModelMixin,
