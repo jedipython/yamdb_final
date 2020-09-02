@@ -15,7 +15,7 @@ services:
     volumes:
       - static_volume:/code/staticfiles
   db:
-    image: postgres:12.0-alpine
+    image: postgres:latest
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
