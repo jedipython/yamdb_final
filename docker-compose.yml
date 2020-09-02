@@ -1,0 +1,36 @@
+# версия docker-compose
+version: '3'
+
+volumes:
+  postgres_data:
+  static_volume:
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    depends_on:
+      - web
+    volumes:
+      - static_volume:/code/staticfiles
+  db:
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+  web:
+    build: .
+    restart: always
+    command: gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
+    expose:
+      - 8000
+    # "зависит от", 
+    depends_on:
+      - db
+    env_file:
+      - ./.env
+    volumes:
+      - static_volume:/code/staticfiles
+  
