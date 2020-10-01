@@ -1,9 +1,11 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import viewsets, filters, mixins
-from .models import Category, Genre, Title
-from .serializers import TitleSerializer, CategorySerializer, GenreSerializer
-from .filters import TitlesFilter
+from rest_framework import filters, mixins, viewsets
+
 from api_yamdb.permissions import has_role
+
+from .filters import TitlesFilter
+from .models import Category, Genre, Title
+from .serializers import CategorySerializer, GenreSerializer, TitleSerializer
 
 
 class CategoryViewSet(mixins.CreateModelMixin,

@@ -1,10 +1,12 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
 from api_yamdb.permissions import IsAuthorOrReadOnly, has_role
-from .models import Review, Comment
-from .serializers import ReviewSerializer, CommentSerializer
 from categories.models import Title
+
+from .models import Comment, Review
+from .serializers import CommentSerializer, ReviewSerializer
 
 
 class ReviewViewSet(viewsets.ModelViewSet):

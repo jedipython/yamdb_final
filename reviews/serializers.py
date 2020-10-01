@@ -1,6 +1,8 @@
 from rest_framework import serializers
-from .models import Review, Comment
+
 from categories.models import Title
+
+from .models import Comment, Review
 
 
 class CurrentTitleDefault:

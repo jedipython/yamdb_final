@@ -1,6 +1,6 @@
-from rest_framework.permissions import BasePermission, SAFE_METHODS
-from users.models import User
+from rest_framework.permissions import SAFE_METHODS, BasePermission
 
+from users.models import User
 
 ROLES = User.ROLE_CHOICES
 ROLE_NAMES = [role[1] for role in ROLES]

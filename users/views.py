@@ -1,17 +1,17 @@
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.core.cache import cache
 from django.core.mail import send_mail
-
-from rest_framework import viewsets, status
+from rest_framework import status, viewsets
 from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework_simplejwt.tokens import AccessToken
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework_simplejwt.tokens import AccessToken
+
+from api_yamdb.permissions import has_role
 
 from .models import User
 from .serializers import EmailSerializer, TokenSerializer, UserSerializer
-from api_yamdb.permissions import has_role
-from django.core.cache import cache
 
 
 @api_view(["POST"])
