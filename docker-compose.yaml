@@ -24,11 +24,9 @@ services:
     restart: always
     expose:
       - 8000
-    # "зависит от", 
     depends_on:
       - db
     env_file:
       - ./.env
     volumes:
       - static_volume:/code/staticfiles
-  
